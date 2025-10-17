@@ -1,0 +1,50 @@
+# Configure what to watch. You can enable/disable entire blocks.
+interval_seconds: 120  # how often to poll
+
+twitter:
+  enabled: false
+  users:
+    # Handles without '@'
+    - washbeats
+    - Reuters
+  max_per_user: 5
+
+facebook:
+  enabled: false
+  pages:
+    # Page IDs or vanity names (prefer numeric IDs). You must have permissions/tokens.
+    - reuters
+    - bloombergbusiness
+  max_per_page: 5
+
+truth_social:
+  enabled: false
+  # If your account is on a Mastodon-compatible server AND you have an access token,
+  # list account usernames here (without @). This may not work for Truth Social.
+  users:
+    - realDonaldTrump
+  max_per_user: 5
+
+rss:
+  enabled: true
+  feeds:
+    # === Reuters (pick tag/topic RSS you need) ===
+    - name: Reuters World
+      url: https://www.reuters.com/world/rss
+      include_keywords: [crypto, bitcoin, fed, interest rates]
+
+    # === Bloomberg (choose the sections you want) ===
+    - name: Bloomberg Markets
+      url: https://feeds.bloomberg.com/markets/news.rss
+      include_keywords: [bitcoin, stocks, yield]
+
+    # === Aggregators (replace with correct RSS URLs) ===
+    - name: News Digest Hub
+      url: https://example.com/news-digest-hub/rss.xml
+      include_keywords: [crypto, blockchain]
+    - name: StratNewsWire
+      url: https://example.com/stratnewswire/rss.xml
+      include_keywords: [markets, policy]
+  max_per_feed: 10
+  # Any items older than this (minutes) will be ignored on first run
+  initial_max_age_minutes: 1440
